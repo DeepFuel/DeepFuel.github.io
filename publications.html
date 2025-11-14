@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DeepFuel-kit – Publications</title>
-
+  <title>DeepFuel-kit/Publications</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -14,78 +13,106 @@
       color: #222;
       line-height: 1.6;
     }
+/* Top Navigation Tabs */
+.navbar {
+  margin-top: 20px;
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+}
 
-    /* HEADER */
-    header {
-      background: linear-gradient(135deg, #00b870, #0091d9);
-      color: white;
-      padding: 40px 20px 60px;
-      text-align: center;
-    }
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: 0.2s;
+}
+
+.navbar a:hover {
+  border-bottom: 2px solid #00ffcc;
+}
+
+
+    /* Header */
+header {
+  position: relative;
+  background: linear-gradient(135deg, #00b870, #0091d9);
+  color: white;
+  padding: 40px 20px 80px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+} 
 
     header h1 {
       margin: 0;
-      font-size: 2.3rem;
+      font-size: 2.5rem;
     }
-
-    /* NAVIGATION */
-    .navbar {
-      margin-top: 20px;
-      display: flex;
-      gap: 25px;
-      justify-content: center;
+    header p {
+      margin: 5px 0 0;
+      font-size: 1.6rem;
     }
-
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.1rem;
-      padding-bottom: 4px;
-      border-bottom: 2px solid transparent;
-      transition: 0.2s;
-    }
-
-    .navbar a:hover {
-      border-bottom: 2px solid #00ffcc;
-    }
-
-    /* PAGE CONTENT */
-    .container {
-      width: 80%;
-      max-width: 900px;
-      background: white;
-      margin: -40px auto 30px;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.15);
-    }
-
+/* Container */
+.container {
+  width: 80%;
+  max-width: 1000px;
+  margin: -60px auto 30px; /* negative margin to lift container over header */
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+  text-align: justify;
+  position: relative;
+  z-index: 1;
+}
     h2 {
       color: #003366;
+      margin-top: 30px;
     }
-
-    ul {
+    .section {
+      margin-bottom: 40px;
       font-size: 1.2rem;
+    }
+    ul {
       padding-left: 20px;
     }
-
     .footer {
       text-align: center;
       padding: 20px;
       margin-top: 40px;
+      font-size: 0.9rem;
       color: #555;
     }
+.profile-pic {
+      width: 150px;
+      height: 150px;
+      position: relative;
+      top: 0;
+      border-radius: 20%;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      object-fit: cover;
+      margin-bottom: 10px;   /* space between photo and text */
+    }
+
+a { color: #003366; }
   </style>
 </head>
 <body>
+   
+  <header>
+  <img src="deepfuel.png" alt="Profile Photo" class="profile-pic" />
+  <h1>DeepFuel-kit</h1>
+  <p>AI-Guided Formulation of Next-Generation Sustainable Fuels</p>
 
-<header>
-  <h1>Publications</h1>
-
+  <!-- Navigation Tabs -->
   <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="publications.html">Publications</a>
   </nav>
+
 </header>
 
 <div class="container">
