@@ -100,6 +100,10 @@ header {
 
 a { color: #003366; }
 
+    /* ----------------------------------- */
+/* MOBILE RESPONSIVENESS (MAIN FIXES)  */
+/* ----------------------------------- */
+
     @media (max-width: 700px) {
 
       header h1 {
@@ -137,15 +141,13 @@ a { color: #003366; }
       }
 
       .contributor-card {
-        width: 160px;
-      }
+    flex: 1 1 140px;      /* smaller base width */
+  }
 
-      .contributor-card img {
-        width: 150px;
-        height: 150px;
-      }
-    }
-    
+  .contributor-card img {
+    max-width: 140px;     /* avoids overflow */
+  }
+    }    
   </style>
 </head>
 <body>
