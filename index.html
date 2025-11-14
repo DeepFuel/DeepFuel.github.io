@@ -74,7 +74,7 @@ header {
       object-fit: cover;
       margin-bottom: 10px;   /* space between photo and text */
     }
-  .contributors-grid {
+.contributors-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
@@ -84,31 +84,31 @@ header {
 }
 
 .contributor-card {
-  text-decoration: none;
-  color: #003c66; /* matches your new palette */
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #003c66;
 }
 
 .contributor-card img {
   width: 180px;
   height: 180px;
-  border-radius: 10%;        /* circular photo */
+  border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
   margin-bottom: 10px;
 }
 
-.contributor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+/* link only on the name */
+.contributor-card a {
+  text-decoration: none;
+  color: #0091d9;  /* header blue */
+  font-weight: 600;
+  transition: color 0.2s ease;
 }
 
-.contributor-card p {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
+.contributor-card a:hover {
+  color: #00b870;  /* header green */
 }
+
 a { color: #003366; }
   </style>
 </head>
