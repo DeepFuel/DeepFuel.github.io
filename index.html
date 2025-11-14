@@ -74,6 +74,41 @@ header {
       object-fit: cover;
       margin-bottom: 10px;   /* space between photo and text */
     }
+    .contributors-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.contributor-card {
+  text-decoration: none;
+  color: #003c66; /* matches your new palette */
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contributor-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;        /* circular photo */
+  object-fit: cover;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  margin-bottom: 10px;
+}
+
+.contributor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.contributor-card p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
     a { color: #003366; }
   </style>
 </head>
@@ -156,7 +191,12 @@ header {
 
     <div class="section">
       <h2>Contributors</h2>
-      <p><a href="https://www.sems.qmul.ac.uk/staff/r.dasilvamachadodefreitas">Dr. Rodolfo Freitas</a></p>
+
+      <div class="contributors-grid">
+      <a class="contributor-card" href="https://www.sems.qmul.ac.uk/staff/r.dasilvamachadodefreitas" target="_blank">
+      <img src="deepfuel.png" alt="Contributor 1" />
+      <p>Dr. Rodolfo Freitas</p>
+      </a>
       <p><a href="https://www.researchgate.net/profile/Zhihao-Xing-4">Dr. Zhihao Xing</a></p>
       <p><a href="https://www.sems.qmul.ac.uk/staff/xi.jiang">Prof. Xi Jiang</a></p>
     </div>
