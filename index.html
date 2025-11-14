@@ -101,6 +101,8 @@ header {
   display: flex;
   gap: 50px;  /* space between the contributores */
   justify-content: center;
+  flex-wrap: wrap; 
+  width: 100%;               /* ensures it never overflows */
   align-items: center;
   margin-top: 20px;
 }
@@ -108,10 +110,13 @@ header {
 .contributor-card {
   text-align: center;
   color: #003c66;
+  flex: 1 1 220px;           /* <-- KEY FIX: responsive card width */
+  max-width: 250px;          /* prevent too large on desktop */
 }
 
 .contributor-card img {
-  width: 180px;
+  width: 100%;               /* responsive */
+  max-width: 180px;          /* desktop size */
   height: 180px;
   border-radius: 10%;
   object-fit: cover;
@@ -174,13 +179,12 @@ a { color: #003366; }
       }
 
       .contributor-card {
-        width: 160px;
-      }
+    flex: 1 1 140px;      /* smaller base width */
+  }
 
-      .contributor-card img {
-        width: 150px;
-        height: 150px;
-      }
+  .contributor-card img {
+    max-width: 140px;     /* avoids overflow */
+  }
     }
 
     
