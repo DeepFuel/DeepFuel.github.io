@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DeepFuel-kit</title>
+
+  <!-- 3Dmol.js -->
+  <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+  
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,6 +17,18 @@
       color: #222;
       line-height: 1.6;
     }
+
+    /* 3D MOLECULAR BACKGROUND */
+    #mol-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -10;
+      opacity: 0.20;     /* Ultra subtle */
+    }
+  
 /* Top Navigation Tabs */
 .navbar {
   margin-top: 20px;
@@ -191,6 +207,55 @@ a { color: #003366; }
   </style>
 </head>
 <body>
+
+<!-- Molecular Background -->
+<div id="mol-bg"></div>
+
+<script>
+const viewer = $3Dmol.createViewer("mol-bg", {
+  defaultcolors: $3Dmol.rasmolElementColors
+});
+
+// Representative molecules
+const molecules = [
+  "CCCCCCCCCC",        // n-decane
+  "CC(C)CC(C)(C)C",    // iso-octane
+  "C1CCCCC1",          // cyclohexane
+  "Cc1ccccc1",         // toluene
+  "CCO",               // ethanol
+  "CC(=O)OCCCCCCCCCCC=O", // methyl oleate approx backbone
+  "COCO"               // simplified OME-1
+];
+
+function randomPosition(scale=40) {
+  return {
+    x: (Math.random()-0.5)*scale,
+    y: (Math.random()-0.5)*scale,
+    z: (Math.random()-0.5)*scale
+  };
+}
+
+// Load molecules
+molecules.forEach(smiles => {
+  $3Dmol.download(`smiles:${smiles}`, viewer, {}, function() {
+    viewer.setStyle({}, {stick:{radius:0.2}});
+    const pos = randomPosition();
+    viewer.translate(pos);
+  });
+});
+
+viewer.zoomTo();
+viewer.render();
+
+// subtle rotation
+function animate() {
+  viewer.rotate(0.1, "y");
+  viewer.render();
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
    
 <header>
   <img src="deepfuel.jpg" alt="Profile Photo" class="profile-pic" />
