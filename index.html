@@ -197,8 +197,7 @@ a { color: #003366; }
 </head>
 <body>
 
-<!-- 🌟 Molecular Background -->
-<div id="mol-bg"></div>
+<!-- Molecular Background -->
 
 <script>
 const viewer = $3Dmol.createViewer("mol-bg", {
@@ -277,6 +276,7 @@ animate();
 
    
 <header>
+  <div id="mol-bg"></div> <!-- molecular background now inside header -->
   <img src="deepfuel.jpg" alt="Profile Photo" class="profile-pic" />
   <h1>DeepFuel-kit</h1>
   <p>AI-Guided Formulation of Next-Generation Sustainable Fuels</p>
