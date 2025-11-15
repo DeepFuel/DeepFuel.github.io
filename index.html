@@ -17,17 +17,6 @@
       color: #222;
       line-height: 1.6;
     }
-
-    /* 3D MOLECULAR BACKGROUND */
-    #mol-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -10;
-      opacity: 0.20;     /* Ultra subtle */
-    }
   
 /* Top Navigation Tabs */
 .navbar {
@@ -208,53 +197,83 @@ a { color: #003366; }
 </head>
 <body>
 
-<!-- Molecular Background -->
+<!-- 🌟 Molecular Background -->
 <div id="mol-bg"></div>
 
 <script>
 const viewer = $3Dmol.createViewer("mol-bg", {
-  defaultcolors: $3Dmol.rasmolElementColors
+  defaultcolors: $3Dmol.rasmolElementColors,
+  backgroundColor: 'transparent'
 });
 
 // Representative molecules
 const molecules = [
-  "CCCCCCCCCC",        // n-decane
-  "CC(C)CC(C)(C)C",    // iso-octane
-  "C1CCCCC1",          // cyclohexane
-  "Cc1ccccc1",         // toluene
-  "CCO",               // ethanol
+  "CCCCCCCCCC",           // n-decane
+  "CC(C)CC(C)(C)C",      // iso-octane
+  "C1CCCCC1",             // cyclohexane
+  "Cc1ccccc1",            // toluene
+  "CCO",                  // ethanol
   "CC(=O)OCCCCCCCCCCC=O", // methyl oleate approx backbone
-  "COCOC"               // simplified OME-1
+  "COCO"                  // simplified OME-1
 ];
 
-function randomPosition(scale=40) {
+// Store individual molecule objects for animation
+const moleculeObjects = [];
+
+// Generate a random position in 3D space
+function randomPosition(scale = 40) {
   return {
-    x: (Math.random()-0.5)*scale,
-    y: (Math.random()-0.5)*scale,
-    z: (Math.random()-0.5)*scale
+    x: (Math.random() - 0.5) * scale,
+    y: (Math.random() - 0.5) * scale,
+    z: (Math.random() - 0.5) * scale
   };
 }
 
-// Load molecules
+// Load molecules into the viewer
 molecules.forEach(smiles => {
-  $3Dmol.download(`smiles:${smiles}`, viewer, {}, function() {
-    viewer.setStyle({}, {stick:{radius:0.2}});
+  $3Dmol.download(`smiles:${smiles}`, viewer, {}, function(molGroup) {
+    viewer.setStyle({}, {stick: {radius: 0.2}});
     const pos = randomPosition();
-    viewer.translate(pos);
+    molGroup.translate(pos);
+    moleculeObjects.push(molGroup);
   });
 });
 
+// Fit and render
 viewer.zoomTo();
 viewer.render();
 
-// subtle rotation
+// Ultra-subtle animation: slow individual rotation + floating
+let angle = 0;
 function animate() {
-  viewer.rotate(0.1, "y");
+  angle += 0.002; // very slow rotation
+  moleculeObjects.forEach((obj, i) => {
+    const floatY = Math.sin(angle + i) * 0.05; // small vertical floating
+    obj.translate({x:0, y:floatY, z:0});
+    obj.rotate(0.05, 'y'); // slow rotation around Y-axis
+  });
   viewer.render();
   requestAnimationFrame(animate);
 }
 animate();
 </script>
+
+<style>
+#mol-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  opacity: 0.18;        /* subtle */
+  pointer-events: none;  /* clicks pass through */
+}
+
+#mol-bg canvas {
+  filter: blur(1.2px);  /* soft background feel */
+}
+</style>
 
    
 <header>
