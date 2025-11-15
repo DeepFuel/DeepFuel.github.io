@@ -355,6 +355,7 @@ molecules.forEach(smiles => {
     const pos = randomPosition();
     molGroup.translate(pos);
     moleculeObjects.push(molGroup);
+    viewer.render();
   });
 });
 
