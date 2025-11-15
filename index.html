@@ -324,37 +324,38 @@ a { color: #003366; }
 <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
   
 <script>
-window.addEventListener("load", function() {
+
+  window.addEventListener("load", function() {
   const viewer = $3Dmol.createViewer("mol-bg", {
     defaultcolors: $3Dmol.rasmolElementColors,
     backgroundColor: 'transparent'
   });
 
-const molecules = [
-  "CCCCCCCCCC",           // n-decane
-  "CC(C)CC(C)(C)C",      // iso-octane
-  "C1CCCCC1",             // cyclohexane
-  "Cc1ccccc1",            // toluene
-  "CCO",                  // ethanol
-  "CC(=O)OCCCCCCCCCCC=O", // methyl oleate approx backbone
-  "COCO"                  // simplified OME-1
-];
+  const molecules = [
+    "CCCCCCCCCC",           // n-decane
+    "CC(C)CC(C)(C)C",      // iso-octane
+    "C1CCCCC1",             // cyclohexane
+    "Cc1ccccc1",            // toluene
+    "CCO",                  // ethanol
+    "CC(=O)OCCCCCCCCCCC=O", // methyl oleate approx backbone
+    "COCO"                  // simplified OME-1
+  ];
 
-const moleculeObjects = [];
+  const moleculeObjects = [];
 
-function randomPosition(scale = 15) {
-  return {
-    x: (Math.random() - 0.5) * scale,
-    y: (Math.random() - 0.5) * scale,
-    z: (Math.random() - 0.5) * scale
-  };
-}
+  function randomPosition(scale = 15) {
+    return {
+      x: (Math.random() - 0.5) * scale,
+      y: (Math.random() - 0.5) * scale,
+      z: (Math.random() - 0.5) * scale
+    };
+  }
 
-// Add each SMILES manually with addModel
-  smilesList.forEach(smiles => {
+  // Use the correct array name here
+  molecules.forEach(smiles => {
     try {
       const molObj = viewer.addModel(smiles, "smi"); // add SMILES directly
-      viewer.setStyle({}, {stick:{radius:0.2}});
+      viewer.setStyle({}, {stick:{radius:0.2, color:'#ffffff'}}); // white sticks for header
       const pos = randomPosition();
       molObj.translate(pos);
       moleculeObjects.push(molObj);
@@ -363,21 +364,24 @@ function randomPosition(scale = 15) {
     }
   });
 
-viewer.zoomTo();
-viewer.render();
-
-let angle = 0;
-function animate() {
-  angle += 0.002;
-  moleculeObjects.forEach((obj, i) => {
-    const floatY = Math.sin(angle + i) * 0.05;
-    obj.translate({x:0, y:floatY, z:0});
-    obj.rotate(0.05, 'y');
-  });
+  viewer.zoomTo();
   viewer.render();
-  requestAnimationFrame(animate);
-}
-animate();
+
+  let angle = 0;
+  function animate() {
+    angle += 0.002;
+    moleculeObjects.forEach((obj, i) => {
+      const floatY = Math.sin(angle + i) * 0.05;
+      obj.translate({x:0, y:floatY, z:0});
+      obj.rotate(0.05, 'y');
+    });
+    viewer.render();
+    requestAnimationFrame(animate);
+  }
+  animate();
+});
+
+  
 </script>
       
 </body>
