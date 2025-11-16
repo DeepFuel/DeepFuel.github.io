@@ -41,7 +41,6 @@
 header {
   position: relative;
   background: linear-gradient(135deg, #00b870, #0091d9);
-  min-height: 400px;
   color: white;
   padding: 40px 20px 80px; 
   display: flex;
@@ -51,25 +50,6 @@ header {
   overflow: hidden; /* ensure background stays inside header */
 }
 
-    /* Molecular background in header */
-    #mol-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 400%;
-      min-height: 300px;  /* important! ensures enough space for molecules */
-      z-index: -1;      /* behind content */
-      opacity: 0.18;
-      pointer-events: none;
-    }
-
-    #mol-bg canvas {
-      background: transparent; /* important for gradient to show */
-      filter: blur(1.2px);
-      width: 100%;
-      height: 100%;
-    }
 
     header h1 {
       margin: 0;
@@ -323,28 +303,6 @@ a { color: #003366; }
     © 2025 DeepFuel-kit
   </div>
 
-<!-- 3Dmol.js -->
-<script src="https://unpkg.com/3dmol@latest/build/3Dmol-min.js"></script>
-<script>
-
-window.addEventListener("load", function() {
-    console.log("3Dmol loaded:", typeof $3Dmol);
-
-    const viewer = $3Dmol.createViewer("mol-bg", {
-        backgroundColor: "transparent"
-    });
-
-    const molecules = ["CCCCC","C1CCCCC1","Cc1ccccc1","CCO","COCOC"];
-    molecules.forEach(smiles => {
-        viewer.addModel(smiles, "smi");
-    });
-
-    viewer.setStyle({}, {stick:{radius:0.2, color:"#ffffff"}});
-    viewer.zoomTo();
-    viewer.render();
-});
-  
-</script>
       
 </body>
 </html>
