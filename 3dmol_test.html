@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>3Dmol Test</title>
-   <script src="https://unpkg.com/3dmol/build/3Dmol-min.js"></script>
-    <style>
-        #mol {
-            width: 100%;
-            height: 400px;
-            background: #eee;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>3Dmol Test</title>
+  <script src="https://unpkg.com/3dmol@latest/build/3Dmol-min.js"></script>
+  <style>
+    #mol {
+      width: 100%;
+      height: 400px;  /* fixed height */
+      background: #eee;
+    }
+  </style>
 </head>
 <body>
-    <h2>3Dmol Test</h2>
-    <div id="mol"></div>
+  <h2>3Dmol Test</h2>
+  <div id="mol"></div>
 
-    <script>
+  <script>
     console.log("TEST FILE RUNNING");
 
-    // Create viewer
-    let element = document.getElementById("mol");
-    let viewer = $3Dmol.createViewer(element, {backgroundColor: "white"});
+    window.addEventListener("load", function() {
+      console.log("3Dmol loaded:", typeof $3Dmol);
 
-    // Add a simple molecule (benzene)
-    viewer.addModel("C1=CC=CC=C1", "smi");
-    viewer.setStyle({}, {stick:{}});
-    viewer.zoomTo();
-    viewer.render();
-    </script>
+      const viewer = $3Dmol.createViewer("mol", { backgroundColor: "white" });
+      viewer.addModel("C1=CC=CC=C1", "smi");
+      viewer.setStyle({}, { stick: {} });
+      viewer.zoomTo();
+      viewer.render();
+    });
+  </script>
 </body>
 </html>
-
