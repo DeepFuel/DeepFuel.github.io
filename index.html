@@ -41,6 +41,7 @@
 header {
   position: relative;
   background: linear-gradient(135deg, #00b870, #0091d9);
+  min-height: 400px;
   color: white;
   padding: 40px 20px 80px; 
   display: flex;
@@ -56,7 +57,7 @@ header {
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: 400%;
       min-height: 300px;  /* important! ensures enough space for molecules */
       z-index: -1;      /* behind content */
       opacity: 0.18;
@@ -323,71 +324,25 @@ a { color: #003366; }
   </div>
 
 <!-- 3Dmol.js -->
-<script src="https://cdn.jsdelivr.net/gh/3dmol/3Dmol.js/build/3Dmol-min.js"></script>
-  
+<script src="https://unpkg.com/3dmol@latest/build/3Dmol-min.js"></script>
 <script>
 
-window.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("mol-bg");
+window.addEventListener("load", function() {
+    console.log("3Dmol loaded:", typeof $3Dmol);
 
-  // Ensure it has size
-  container.style.width = "100%";
-  container.style.height = header.offsetHeight + "px";
-
-  const viewer = $3Dmol.createViewer(container, {
-    defaultcolors: $3Dmol.rasmolElementColors,
-    backgroundColor: "transparent"
-  });
-
-
-  const molecules = [
-    "CCCCC",           // n-decane
-    "C1CCCCC1",             // cyclohexane
-    "Cc1ccccc1",            // toluene
-    "CCO",                  // ethanol
-    "COCOC"                  // simplified OME-1
-  ];
-
-  const moleculeObjects = [];
-
-  function randomPosition(scale = 15) {
-    return {
-      x: (Math.random() - 0.5) * scale,
-      y: (Math.random() - 0.5) * scale,
-      z: (Math.random() - 0.5) * scale
-    };
-  }
-
-  // Use the correct array name here
-  molecules.forEach(smiles => {
-    try {
-      const molObj = viewer.addModel(smiles, "smi"); // add SMILES directly
-      viewer.setStyle({}, {stick:{radius:0.2, color:'#ffffff'}}); // white sticks for header
-      const pos = randomPosition();
-      molObj.translate(pos);
-      moleculeObjects.push(molObj);
-    } catch (err) {
-      console.warn("Failed to add molecule:", smiles, err);
-    }
-  });
-
-  viewer.zoomTo();
-  viewer.render();
-
-  let angle = 0;
-  function animate() {
-    angle += 0.002;
-    moleculeObjects.forEach((obj, i) => {
-      const floatY = Math.sin(angle + i) * 0.05;
-      obj.translate({x:0, y:floatY, z:0});
-      obj.rotate(0.05, 'y');
+    const viewer = $3Dmol.createViewer("mol-bg", {
+        backgroundColor: "transparent"
     });
-    viewer.render();
-    requestAnimationFrame(animate);
-  }
-  animate();
-});
 
+    const molecules = ["CCCCC","C1CCCCC1","Cc1ccccc1","CCO","COCOC"];
+    molecules.forEach(smiles => {
+        viewer.addModel(smiles, "smi");
+    });
+
+    viewer.setStyle({}, {stick:{radius:0.2, color:"#ffffff"}});
+    viewer.zoomTo();
+    viewer.render();
+});
   
 </script>
       
