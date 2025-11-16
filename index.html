@@ -66,6 +66,8 @@ header {
     #mol-bg canvas {
       background: transparent; /* important for gradient to show */
       filter: blur(1.2px);
+      width: 100%;
+      height: 100%;
     }
 
     header h1 {
@@ -325,11 +327,18 @@ a { color: #003366; }
   
 <script>
 
-  window.addEventListener("load", function() {
-  const viewer = $3Dmol.createViewer("mol-bg", {
+window.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("mol-bg");
+
+  // Ensure it has size
+  container.style.width = "100%";
+  container.style.height = header.offsetHeight + "px";
+
+  const viewer = $3Dmol.createViewer(container, {
     defaultcolors: $3Dmol.rasmolElementColors,
-    backgroundColor: 'transparent'
+    backgroundColor: "transparent"
   });
+
 
   const molecules = [
     "CCCCC",           // n-decane
