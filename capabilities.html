@@ -141,8 +141,9 @@ for(let i=0; i<70; i++){
   div.className = 'flying-molecule';
 
   const top = Math.random() * 100;
-  const size =  40 //20 + Math.random() * 40;
-  const speed = 35 //20 + Math.random() * 15;
+  // Set size: smaller for ammonia
+  const size = (mol === 'ammonia.png') ? 30 : 100; //const size =  20 + Math.random() * 40;
+  const speed = 30 + Math.random() * 15; // control the speed
   const left = Math.random() * -100;
 
   div.style.top = `${top}px`;
