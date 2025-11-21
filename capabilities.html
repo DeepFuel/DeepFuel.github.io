@@ -67,7 +67,10 @@
       z-index: 2;
     }
 
-  
+  @keyframes spin {
+  from { transform: rotateZ(0deg); }
+  to { transform: rotateZ(360deg); }
+}
 
     /* Smooth sinusoidal vertical drifting + rotation */
 @keyframes fly-left-to-right {
@@ -211,7 +214,7 @@ const size =
   const depth = 0.6 + Math.random() * 0.8;
 
   // Random animation delay (aleatoric start)
-  const delay = 0.1; // seconds
+  const delay = 0; // seconds
   div.style.animationDelay = `${delay}s, ${delay}s`;
   
   // Random direction: 0 = left→right, 1 = right→left
@@ -228,10 +231,10 @@ const size =
 
   if (direction === 'ltr') {
   div.style.left = `${-200 - Math.random() * 200}px`;
-  div.style.animationName = 'fly-left-to-right';
+  div.style.animationName = 'fly-left-to-right', 'spin';
 } else {
   div.style.left = `${window.innerWidth + 200 + Math.random() * 200}px`;
-  div.style.animationName = 'fly-right-to-left';
+  div.style.animationName = 'fly-right-to-left', 'spin';
 }
 
 div.style.animationDuration = `${speed}s`;
