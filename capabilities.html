@@ -39,9 +39,26 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      overflow: hidden;
     }
     header h1 { margin: 0; font-size: 2.5rem; }
     header p { margin: 5px 0 0; font-size: 1.6rem; }
+
+    /* Flying molecules */
+    .flying-molecule {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: fly 12s linear infinite;
+    }
+    @keyframes fly {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(400px, 200px) rotate(180deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
+    }
+
     .container {
       width: 80%;
       max-width: 1000px;
@@ -57,9 +74,10 @@
     h2 { color: #003366; margin-top: 30px; }
     .section { margin-bottom: 40px; font-size: 1.2rem; }
     ul { padding-left: 20px; font-size: 1.2rem; }
-    li { color: #006699; } /* Match Publications text color */
+    li { color: #006699; }
     .footer { text-align: center; padding: 20px; margin-top: 40px; font-size: 0.9rem; color: #555; }
     .profile-pic { width: 150px; height: 150px; border-radius: 20%; box-shadow: 0 10px 20px rgba(0,0,0,0.2); object-fit: cover; margin-bottom: 10px; }
+
     @media (max-width: 700px) {
       header h1 { font-size: 2rem; }
       header p { font-size: 1.1rem; }
@@ -73,6 +91,16 @@
   <img src="deepfuel.jpg" alt="Profile Photo" class="profile-pic" />
   <h1>DeepFuel-kit</h1>
   <p>AI-Guided Formulation of Next-Generation Sustainable Fuels</p>
+
+  <!-- Flying molecules with different fuel types -->
+  <div class="flying-molecule" style="top:10px; left:50px; background-image:url('dodecane.png'); animation-duration:10s;"></div>
+  <div class="flying-molecule" style="top:80px; left:150px; background-image:url('benzene.png'); animation-duration:12s;"></div>
+  <div class="flying-molecule" style="top:40px; left:250px; background-image:url('fames.png'); animation-duration:11s;"></div>
+  <div class="flying-molecule" style="top:20px; left:350px; background-image:url('methanol.png'); animation-duration:13s;"></div>
+  <div class="flying-molecule" style="top:60px; left:450px; background-image:url('hydrogen.png'); animation-duration:14s;"></div>
+  <div class="flying-molecule" style="top:30px; left:550px; background-image:url('ammonia.png'); animation-duration:12s;"></div>
+  <div class="flying-molecule" style="top:50px; left:650px; background-image:url('ome3.png'); animation-duration:15s;"></div>
+
   <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="capabilities.html">Key Capabilities</a>
@@ -98,4 +126,3 @@
 <div class="footer">© 2025 DeepFuel-kit</div>
 </body>
 </html>
-
