@@ -67,20 +67,15 @@
       z-index: 2;
     }
 
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
     @keyframes fly-left-to-right {
-      from { transform: translateX(0); }
-      to { transform: translateX(120vw); }
+    0% { transform: translateX(-10vw) rotate(0deg); }
+    100% { transform: translateX(110vw) rotate(360deg); }
     }
 
-    @keyframes fly-right-to-left {
-      from { transform: translateX(0); }
-      to { transform: translateX(-120vw); }
-    }
+  @keyframes fly-right-to-left {
+    0% { transform: translateX(110vw) rotate(0deg); }
+    100% { transform: translateX(-10vw) rotate(360deg); }
+  }
 
     .container {
       width: 80%;
@@ -165,7 +160,7 @@ for (let i = 0; i < 70; i++) {
   const rotateSpeed = 5 + Math.random() * 10;
 
   // Size rule: ammonia smaller
-  const size = mol === 'ammonia.png' ? 30 : 50;
+  const size = mol === 'ammonia.png' ? 30 : 150;
 
   // Random direction: 0 = left→right, 1 = right→left
   const direction = Math.random() < 0.5 ? 'ltr' : 'rtl';
@@ -179,14 +174,14 @@ for (let i = 0; i < 70; i++) {
   div.style.setProperty('--rotate-speed', `${rotateSpeed}s`);
 
   if (direction === 'ltr') {
-    div.style.left = `${-200 - Math.random() * 200}px`;
-    div.style.animationName = 'fly-left-to-right, spin';
-  } else {
-    div.style.left = `${window.innerWidth + 200 + Math.random() * 200}px`;
-    div.style.animationName = 'fly-right-to-left, spin';
-  }
+  div.style.left = `${-200 - Math.random() * 200}px`;
+  div.style.animationName = 'fly-left-to-right';
+} else {
+  div.style.left = `${window.innerWidth + 200 + Math.random() * 200}px`;
+  div.style.animationName = 'fly-right-to-left';
+}
 
-  div.style.animationDuration = `${speed}s, var(--rotate-speed)`;
+div.style.animationDuration = `${speed}s`;
 
   container.appendChild(div);
 }
