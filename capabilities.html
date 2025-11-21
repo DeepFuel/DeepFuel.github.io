@@ -237,8 +237,10 @@ const size =
 }
 
 div.style.animationDuration = `${speed}s, ${rotateSpeed}s`;;
-
-  container.appendChild(div);
+div.style.animationTimingFunction = 'linear, linear';
+div.style.animationIterationCount = 'infinite, infinite';
+  
+container.appendChild(div);
 }
 
 </script>
