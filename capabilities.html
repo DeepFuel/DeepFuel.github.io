@@ -47,20 +47,22 @@
    /* Flying molecules */
 .flying-molecule {
 position: absolute;
-font-weight: bold;
 pointer-events: none;
-color: rgba(255,255,255,0.9);
-white-space: nowrap;
 animation-iteration-count: infinite;
 animation-timing-function: linear;
 z-index: 1;
-padding-left: 24px;
 }
 
 
 @keyframes fly-left-to-right {
 0% { transform: translateX(-10vw); }
 100% { transform: translateX(110vw); }
+}
+
+
+.flying-molecule[data-speed] {
+animation-name: fly-left-to-right;
+animation-duration: var(--speed, 15s);
 }
 
     .container {
@@ -96,14 +98,14 @@ padding-left: 24px;
   <h1>DeepFuel-kit</h1>
   <p>AI-Guided Formulation of Next-Generation Sustainable Fuels</p>
 
-  <!-- Flying molecules floating across header -->
-  <div class="flying-molecule" style="top:10px; font-size:24px; --speed:12s; background-image:url('molecules/dodecane.png');"></div>
-  <div class="flying-molecule" style="top:50px; font-size:28px; --speed:15s; background-image:url('molecules/benzene.png');"></div>
-  <div class="flying-molecule" style="top:30px; font-size:22px; --speed:13s; background-image:url('molecules/fames.png');"></div>
-  <div class="flying-molecule" style="top:70px; font-size:20px; --speed:16s; background-image:url('molecules/methanol.png');"></div>
-  <div class="flying-molecule" style="top:40px; font-size:18px; --speed:14s; background-image:url('molecules/hydrogen.png');"></div>
-  <div class="flying-molecule" style="left:60px; width:40px; high:20px --speed:15s; background-image:url('molecules/ammonia.png');"></div>
-  <div class="flying-molecule" style="top:20px; font-size:24px; --speed:17s; background-image:url('molecules/ome3.png');"></div>
+  <!-- Flying molecule images -->
+<div class="flying-molecule" style="top:10px; width:40px; height:40px; --speed:12s; background-image:url('molecules/dodecane.png'); background-size:contain; background-repeat:no-repeat; background-position:center;" data-speed></div>
+<div class="flying-molecule" style="top:50px; width:40px; height:40px; --speed:15s; background-image:url('molecules/benzene.png'); background-size:contain; background-repeat:no-repeat; background-position:center;" data-speed></div>
+<div class="flying-molecule" style="top:30px; width:40px; height:40px; --speed:13s; background-image:url('molecules/fames.png'); background-size:contain; background-repeat:no-repeat; background-position:center;" data-speed></div>
+<div class="flying-molecule" style="top:70px; width:40px; height:40px; --speed:16s; background-image:url('molecules/methanol.png'); background-size:contain; background-repeat:no-repeat; background-position:center;" data-speed></div>
+<div class="flying-molecule" style="top:40px; width:40px; height:40px; --speed:14s; background-image:url('molecules/hydrogen.png'); background-size:contain; background-repeat:no-repeat; background-position:center;" data-speed></div>
+<div class="flying-molecule" style="top:60px; width:40px; height:40px; --speed:15s; background-image:url('molecules/ammonia.png'); background-size:contain; background-repeat:no-repeat; background-position:center;" data-speed></div>
+<div class="flying-molecule" style="top:20px; width:40px; height:40px; --speed:17s; background-image:url('molecules/ome3.png'); background-size:contain; background-repeat:no-repeat; background-position:center;" data-speed></div>
   
   <nav class="navbar">
     <a href="index.html">Home</a>
