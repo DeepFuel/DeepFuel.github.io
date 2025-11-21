@@ -44,24 +44,31 @@
     header h1 { margin: 0; font-size: 2.5rem; }
     header p { margin: 5px 0 0; font-size: 1.6rem; }
 
-    /* Flying molecules */
+   /* Flying molecules */
 .flying-molecule {
 position: absolute;
 font-weight: bold;
 pointer-events: none;
-color: rgba(255,255,255,0.8);
+color: rgba(255,255,255,0.9);
 white-space: nowrap;
-animation-name: fly;
 animation-iteration-count: infinite;
 animation-timing-function: linear;
-  z-index: 1;
+z-index: 1;
+background-size: contain;
+background-repeat: no-repeat;
+padding-left: 24px;
 }
 
 
-@keyframes fly {
-0% { transform: translateX(-100px) translateY(0px); }
-50% { transform: translateX(50vw) translateY(20px); }
-100% { transform: translateX(110vw) translateY(0px); }
+@keyframes fly-left-to-right {
+0% { transform: translateX(-10vw); }
+100% { transform: translateX(110vw); }
+}
+
+
+.flying-molecule[data-speed] {
+animation-name: fly-left-to-right;
+animation-duration: var(--speed, 15s);
 }
 
     .container {
@@ -97,15 +104,15 @@ animation-timing-function: linear;
   <h1>DeepFuel-kit</h1>
   <p>AI-Guided Formulation of Next-Generation Sustainable Fuels</p>
 
-  <!-- Flying molecules with different fuel types -->
-  <div class="flying-molecule" style="top:10px; font-size:24px; background-image:url('molecules/dodecane.png'); animation-duration:12s;"></div>
-  <div class="flying-molecule" style="top:50px; font-size:28px; background-image:url('molecules/benzene.png'); animation-duration:12s;"></div>
-  <div class="flying-molecule" style="top:30px; font-size:22px; background-image:url('molecules/fames.png'); animation-duration:12s;"></div>
-  <div class="flying-molecule" style="top:70px; font-size:20px; background-image:url('molecules/methanol.png'); animation-duration:12s;"></div>
-  <div class="flying-molecule" style="top:40px; font-size:18px; background-image:url('molecules/heptamethylnonane.png'); animation-duration:12s;"></div>
-  <div class="flying-molecule" style="top:60px; font-size:26px; background-image:url('molecules/ammonia.png'); animation-duration:12s;"></div>
-  <div class="flying-molecule" style="top:20px; font-size:24px; background-image:url('molecules/ome3.png'); animation-duration:12s;"></div>
-
+  <!-- Flying molecules floating across header -->
+  <div class="flying-molecule" style="top:10px; font-size:24px; --speed:12s; background-image:url('molecules/dodecane.png');">C12H26</div>
+  <div class="flying-molecule" style="top:50px; font-size:28px; --speed:15s; background-image:url('molecules/benzene.png');">C6H6</div>
+  <div class="flying-molecule" style="top:30px; font-size:22px; --speed:13s; background-image:url('molecules/fames.png');">FAMEs</div>
+  <div class="flying-molecule" style="top:70px; font-size:20px; --speed:16s; background-image:url('molecules/methanol.png');">CH3OH</div>
+  <div class="flying-molecule" style="top:40px; font-size:18px; --speed:14s; background-image:url('molecules/hydrogen.png');">H2</div>
+  <div class="flying-molecule" style="top:60px; font-size:26px; --speed:15s; background-image:url('molecules/ammonia.png');">NH3</div>
+  <div class="flying-molecule" style="top:20px; font-size:24px; --speed:17s; background-image:url('molecules/ome3.png');">OME3</div>
+  
   <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="capabilities.html">Key Capabilities</a>
