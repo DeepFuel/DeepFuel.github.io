@@ -44,32 +44,45 @@
     header h1 { margin: 0; font-size: 2.5rem; }
     header p { margin: 5px 0 0; font-size: 1.6rem; }
 
-   /* Flying molecules */
-.flying-molecule {
-position: absolute;
-pointer-events: none;
-animation-iteration-count: infinite;
-animation-timing-function: linear;
-z-index: 1;
-}
+  #flying-molecules-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
 
+  /* Molecule appearance */
+  .flying-molecule {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    pointer-events: none;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    z-index: 2;
+  }
 
-@keyframes fly-left-to-right {
-  0% { transform: translateX(-10vw) rotate(0deg); }
-  50% { transform: translateX(50vw) translateY(5px) rotate(180deg); }
-  100% { transform: translateX(110vw) rotate(360deg); }
-}
+  /* Rotation */
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
 
-@keyframes fly-right-to-left {
-  0% { transform: translateX(110vw) rotate(360deg); }
-  50% { transform: translateX(5vw) translateY(50px) rotate(180deg); }
-  100% { transform: translateX(-10vw) rotate(0deg); }
-}
+  /* Fly L → R */
+  @keyframes fly-left-to-right {
+    from { transform: translateX(0); }
+    to { transform: translateX(120vw); }
+  }
 
-
-.flying-molecule[data-speed] {
-animation-duration: var(--speed, 15s);
-}
+  /* Fly R → L */
+  @keyframes fly-right-to-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-120vw); }
+  }
 
     .container {
       width: 80%;
@@ -131,40 +144,60 @@ animation-duration: var(--speed, 15s);
 
 <div class="footer">© 2025 DeepFuel-kit</div>
 
-<script>
-const molecules = ['dodecane.png','benzene.png','fames.png','methanol.png','hydrogen.png','ammonia.png','ome3.png'];
+  <script>
+/* Molecule icons */
+const molecules = [
+  'dodecane.png',
+  'benzene.png',
+  'fames.png',
+  'methanol.png',
+  'hydrogen.png',
+  'ammonia.png',
+  'ome3.png'
+];
+
 const container = document.getElementById('flying-molecules-container');
 
-for(let i=0; i<70; i++){
+/* Generate 70 aleatoric molecules */
+for (let i = 0; i < 70; i++) {
   const mol = molecules[i % molecules.length];
   const div = document.createElement('div');
   div.className = 'flying-molecule';
 
-  const top = Math.random() * 100;
-  // Set size: smaller for ammonia
-  const size = (mol === 'ammonia.png') ? 30 : 100; //const size =  20 + Math.random() * 40;
-  const speed = 30 + Math.random() * 15; // control the speed
-  const left = Math.random() * -100;
+  /* Random vertical spawn position */
+  const top = Math.random() * window.innerHeight;
+
+  /* Different size for ammonia */
+  const size = mol === 'ammonia.png' ? 30 : 55;
+
+  /* Random speed */
+  const speed = 30 + Math.random() * 25;
+
+  /* Random rotation speed */
+  const rotateSpeed = 6 + Math.random() * 12;
+
+  /* Random direction */
+  const direction = Math.random() < 0.5 ? 'ltr' : 'rtl';
 
   div.style.top = `${top}px`;
   div.style.width = `${size}px`;
   div.style.height = `${size}px`;
   div.style.backgroundImage = `url('molecules/${mol}')`;
-  div.style.backgroundSize = 'contain';
-  div.style.backgroundRepeat = 'no-repeat';
-  div.style.backgroundPosition = 'center';
-  div.style.setProperty('--speed', `${speed}s`);
 
-  // Randomly assign left-to-right or right-to-left
-  if (Math.random() < 0.5) {
-    div.style.animationName = 'fly-left-to-right';
-    div.style.left = `${left}px`;
+  /* Animation duration (fly + spin) */
+  div.style.animationDuration = `${speed}s, ${rotateSpeed}s`;
+  div.style.animationTimingFunction = "linear, linear";
+  div.style.animationIterationCount = "infinite, infinite";
+
+  /* Direction logic */
+  if (direction === 'ltr') {
+    div.style.left = `${-200 - Math.random() * 300}px`;
+    div.style.animationName = 'fly-left-to-right, spin';
   } else {
-    div.style.animationName = 'fly-right-to-left';
-    div.style.left = ''; // will start from right via animation
+    div.style.left = `${window.innerWidth + 200 + Math.random() * 300}px`;
+    div.style.animationName = 'fly-right-to-left, spin';
   }
 
-  div.setAttribute('data-speed','');
   container.appendChild(div);
 }
 </script>
