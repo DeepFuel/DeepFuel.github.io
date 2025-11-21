@@ -155,8 +155,8 @@ const molecules = [
 
 const container = document.getElementById('flying-molecules-container');
 
-/* Generate 70 aleatoric molecules */
-for (let i = 0; i < 70; i++) {
+/* Generate 20 aleatoric molecules */
+for (let i = 0; i < 20; i++) {
   const mol = molecules[i % molecules.length];
   const div = document.createElement('div');
   div.className = 'flying-molecule';
@@ -165,7 +165,7 @@ for (let i = 0; i < 70; i++) {
   const top = Math.random() * window.innerHeight;
 
   /* Different size for ammonia */
-  const size = mol === 'ammonia.png' ? 30 : 55;
+  const size = mol === 'ammonia.png' ? 30 : 150;
 
   /* Random speed */
   const speed = 30 + Math.random() * 25;
@@ -176,22 +176,22 @@ for (let i = 0; i < 70; i++) {
   /* Random direction */
   const direction = Math.random() < 0.5 ? 'ltr' : 'rtl';
 
-  div.style.top = `${top}px`;
-  div.style.width = `${size}px`;
-  div.style.height = `${size}px`;
-  div.style.backgroundImage = `url('molecules/${mol}')`;
+  div.style.top = '${top}px';
+  div.style.width = '${size}px';
+  div.style.height = '${size}px';
+  div.style.backgroundImage = 'url('molecules/${mol}')';
 
   /* Animation duration (fly + spin) */
-  div.style.animationDuration = `${speed}s, ${rotateSpeed}s`;
+  div.style.animationDuration = '${speed}s, ${rotateSpeed}s';
   div.style.animationTimingFunction = "linear, linear";
   div.style.animationIterationCount = "infinite, infinite";
 
   /* Direction logic */
   if (direction === 'ltr') {
-    div.style.left = `${-200 - Math.random() * 300}px`;
+    div.style.left = '${-200 - Math.random() * 300}px';
     div.style.animationName = 'fly-left-to-right, spin';
   } else {
-    div.style.left = `${window.innerWidth + 200 + Math.random() * 300}px`;
+    div.style.left = '${window.innerWidth + 200 + Math.random() * 300}px';
     div.style.animationName = 'fly-right-to-left, spin';
   }
 
