@@ -13,40 +13,33 @@
       color: #222;
       line-height: 1.6;
     }
-/* Top Navigation Tabs */
-.navbar {
-  margin-top: 20px;
-  display: flex;
-  gap: 25px;
-  justify-content: center;
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.5rem;
-  padding-bottom: 4px;
-  border-bottom: 2px solid transparent;
-  transition: 0.2s;
-}
-
-.navbar a:hover {
-  border-bottom: 2px solid #00ffcc;
-}
-
-
-    /* Header */
-header {
-  position: relative;
-  background: linear-gradient(135deg, #00b870, #0091d9);
-  color: white;
-  padding: 40px 20px 80px; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-} 
-
+    .navbar {
+      margin-top: 20px;
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5rem;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+    .navbar a:hover {
+      border-bottom: 2px solid #00ffcc;
+    }
+    header {
+      position: relative;
+      background: linear-gradient(135deg, #00b870, #0091d9);
+      color: white;
+      padding: 40px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
     header h1 {
       margin: 0;
       font-size: 2.5rem;
@@ -55,19 +48,18 @@ header {
       margin: 5px 0 0;
       font-size: 1.6rem;
     }
-/* Container */
-.container {
-  width: 80%;
-  max-width: 1000px;
-  margin: -60px auto 30px; /* negative margin to lift container over header */
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.15);
-  text-align: justify;
-  position: relative;
-  z-index: 1;
-}
+    .container {
+      width: 80%;
+      max-width: 1000px;
+      margin: -60px auto 30px;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+      text-align: justify;
+      position: relative;
+      z-index: 1;
+    }
     h2 {
       color: #003366;
       margin-top: 30px;
@@ -76,9 +68,23 @@ header {
       margin-bottom: 40px;
       font-size: 1.2rem;
     }
-    ul {
-      padding-left: 20px;
-      font-size: 1.2rem;
+    .pub-entry {
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eee;
+    }
+    .pub-title {
+      font-weight: bold;
+      font-size: 1.15rem;
+      color: #002b5c;
+    }
+    .pub-authors {
+      font-size: 1rem;
+      color: #444;
+    }
+    .pub-venue {
+      font-size: 1rem;
+      color: #006699;
     }
     .footer {
       text-align: center;
@@ -87,98 +93,74 @@ header {
       font-size: 0.9rem;
       color: #555;
     }
-.profile-pic {
+    .profile-pic {
       width: 150px;
       height: 150px;
-      position: relative;
-      top: 0;
       border-radius: 20%;
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       object-fit: cover;
-      margin-bottom: 10px;   /* space between photo and text */
+      margin-bottom: 10px;
     }
-
-a { color: #003366; }
-
     @media (max-width: 700px) {
-
-      header h1 {
-        font-size: 2rem;
-      }
-
-      header p {
-        font-size: 1.1rem;
-      }
-
-      .navbar a {
-        font-size: 1.1rem;
-      }
-
-      .profile-pic {
-        width: 120px;
-        height: 120px;
-      }
-
-      .container {
-        width: 92%;
-        padding: 20px;
-      }
-
-      .section {
-        font-size: 1rem;
-      }
-
-      ul {
-        font-size: 1rem;
-      }
-
-      .contributors-grid {
-        gap: 25px;
-      }
-
-      .contributor-card {
-    flex: 1 1 140px;      /* smaller base width */
-  }
-
-  .contributor-card img {
-    max-width: 140px;     /* avoids overflow */
-  }
+      header h1 { font-size: 2rem; }
+      header p { font-size: 1.1rem; }
+      .navbar a { font-size: 1.1rem; }
+      .container { width: 92%; padding: 20px; }
+      .pub-title { font-size: 1.05rem; }
     }
-    
   </style>
 </head>
 <body>
-   
 <header>
   <img src="deepfuel.jpg" alt="Profile Photo" class="profile-pic" />
   <h1>DeepFuel-kit</h1>
   <p>AI-Guided Formulation of Next-Generation Sustainable Fuels</p>
-
-  <!-- Navigation Tabs -->
   <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="capabilities.html">Key Capabilities</a>
     <a href="tutorials.html">Tutorials</a>
     <a href="publications.html">Publications</a>
   </nav>
-
 </header>
 
 <div class="container">
   <div class="section">
-  <h2>Peer-reviewed Publications</h2>
+    <h2>Peer-reviewed Publications</h2>
 
-  <ul>
-    <li><strong>Paper Title</strong> – Journal, Year.</li>
-    <li><strong>Paper Title</strong> – Journal, Year.</li>
-    <li><strong>Paper Title</strong> – Journal, Year.</li>
-  </ul>
-</div>
+    <div class="pub-entry">
+      <div class="pub-title">Pathways to sustainable fuel design from a probabilistic deep learning perspective</div>
+      <div class="pub-authors">Rodolfo S. M. Freitas, Zhihao Xing, Fernando A. Rochinha, Roger F. Cracknell, Daniel Mira, Nader Karimi, Xi Jiang</div>
+      <div class="pub-venue"><em>Advances in Applied Energy</em>, 2025. <a href="https://doi.org/10.1016/j.adapen.2025.100226" target="_blank">https://doi.org/10.1016/j.adapen.2025.100226</a></div>
+    </div>
+
+    <div class="pub-entry">
+      <div class="pub-title">A data-driven multi-level simulation framework for ammonia-syngas combustion</div>
+      <div class="pub-authors">Zhihao Xing, Rodolfo S. M. Freitas, Xi Jiang</div>
+      <div class="pub-venue"><em>Chemical Engineering Journal Advances</em>, 2025. <a href="https://doi.org/10.1016/j.ceja.2025.100960" target="_blank">https://doi.org/10.1016/j.ceja.2025.100960</a></div>
+    </div>
+
+    <div class="pub-entry">
+      <div class="pub-title">Machine learning-driven multi-objective optimisation of ammonia co-firing with highly reactive fuels</div>
+      <div class="pub-authors">Zhihao Xing, Rodolfo S. M. Freitas, Xi Jiang</div>
+      <div class="pub-venue"><em>Energy Conversion and Management</em>, 2025. <a href="https://doi.org/10.1016/j.enconman.2025.120071" target="_blank">https://doi.org/10.1016/j.enconman.2025.120071</a></div>
+    </div>
+
+    <div class="pub-entry">
+      <div class="pub-title">Descriptors-based machine-learning prediction of cetane number using quantitative structure–property relationship</div>
+      <div class="pub-authors">Rodolfo S. M. Freitas, Xi Jiang</div>
+      <div class="pub-venue"><em>Energy and AI</em>, 2024. <a href="https://doi.org/10.1016/j.egyai.2024.100385" target="_blank">https://doi.org/10.1016/j.egyai.2024.100385</a></div>
+    </div>
+
+    <div class="pub-entry">
+      <div class="pub-title">Towards predicting liquid fuel physicochemical properties using molecular dynamics guided machine learning models</div>
+      <div class="pub-authors">Rodolfo S. M. Freitas, Ágatha P.F. Lima, Cheng Chen, Fernando A. Rochinha, Daniel Mira, Xi Jiang</div>
+      <div class="pub-venue"><em>Fuel</em>, 2022. <a href="https://doi.org/10.1016/j.fuel.2022.125415" target="_blank">https://doi.org/10.1016/j.fuel.2022.125415</a></div>
+    </div>
+
+  </div>
 </div>
 
-<div class="footer">
-  © 2025 DeepFuel-kit
-</div>
+<div class="footer">© 2025 DeepFuel-kit</div>
 
 </body>
 </html>
