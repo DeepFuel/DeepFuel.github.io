@@ -63,6 +63,7 @@
       pointer-events: none;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
+      display: block;
       z-index: 2;
     }
 
@@ -141,62 +142,55 @@
 
 <div class="footer">© 2025 DeepFuel-kit</div>
 
-  <script>
-/* Molecule icons */
-const molecules = [
-  'dodecane.png',
-  'benzene.png',
-  'fames.png',
-  'methanol.png',
-  'hydrogen.png',
-  'ammonia.png',
-  'ome3.png'
+<script>
+  const molecules = [
+  'dodecane.png','benzene.png','fames.png','methanol.png',
+  'hydrogen.png','ammonia.png','ome3.png'
 ];
 
 const container = document.getElementById('flying-molecules-container');
 
-/* Generate 20 aleatoric molecules */
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 70; i++) {
   const mol = molecules[i % molecules.length];
   const div = document.createElement('div');
   div.className = 'flying-molecule';
 
-  /* Random vertical spawn position */
+  // Random vertical starting point
   const top = Math.random() * window.innerHeight;
 
-  /* Different size for ammonia */
-  const size = mol === 'ammonia.png' ? 30 : 150;
+  // Random speed
+  const speed = 25 + Math.random() * 20;
 
-  /* Random speed */
-  const speed = 30 + Math.random() * 25;
+  // Random rotation speed
+  const rotateSpeed = 5 + Math.random() * 10;
 
-  /* Random rotation speed */
-  const rotateSpeed = 6 + Math.random() * 12;
+  // Size rule: ammonia smaller
+  const size = mol === 'ammonia.png' ? 30 : 50;
 
-  /* Random direction */
+  // Random direction: 0 = left→right, 1 = right→left
   const direction = Math.random() < 0.5 ? 'ltr' : 'rtl';
 
-  div.style.top = '${top}px';
-  div.style.width = '${size}px';
-  div.style.height = '${size}px';
-  div.style.backgroundImage = 'url('molecules/${mol}')';
+  div.style.top = `${top}px`;
+  div.style.width = `${size}px`;
+  div.style.height = `${size}px`;
+  div.style.backgroundImage = `url('molecules/${mol}')`;
+  div.style.backgroundSize = 'contain';
+  div.style.setProperty('--speed', `${speed}s`);
+  div.style.setProperty('--rotate-speed', `${rotateSpeed}s`);
 
-  /* Animation duration (fly + spin) */
-  div.style.animationDuration = '${speed}s, ${rotateSpeed}s';
-  div.style.animationTimingFunction = "linear, linear";
-  div.style.animationIterationCount = "infinite, infinite";
-
-  /* Direction logic */
   if (direction === 'ltr') {
-    div.style.left = '${-200 - Math.random() * 300}px';
+    div.style.left = `${-200 - Math.random() * 200}px`;
     div.style.animationName = 'fly-left-to-right, spin';
   } else {
-    div.style.left = '${window.innerWidth + 200 + Math.random() * 300}px';
+    div.style.left = `${window.innerWidth + 200 + Math.random() * 200}px`;
     div.style.animationName = 'fly-right-to-left, spin';
   }
 
+  div.style.animationDuration = `${speed}s, var(--rotate-speed)`;
+
   container.appendChild(div);
 }
+
 </script>
 
 </body>
