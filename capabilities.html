@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DeepFuel-kit/Capabilities</title>
   <style>
-    body {
+        body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -44,45 +44,42 @@
     header h1 { margin: 0; font-size: 2.5rem; }
     header p { margin: 5px 0 0; font-size: 1.6rem; }
 
-  #flying-molecules-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 1;
-  }
+    /* Flying molecules container */
+    #flying-molecules-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
 
-  /* Molecule appearance */
-  .flying-molecule {
-    position: absolute;
-    background-repeat: no-repeat;
-    background-size: contain;
-    pointer-events: none;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    z-index: 2;
-  }
+    .flying-molecule {
+      position: absolute;
+      background-repeat: no-repeat;
+      background-size: contain;
+      pointer-events: none;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      z-index: 2;
+    }
 
-  /* Rotation */
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
 
-  /* Fly L → R */
-  @keyframes fly-left-to-right {
-    from { transform: translateX(0); }
-    to { transform: translateX(120vw); }
-  }
+    @keyframes fly-left-to-right {
+      from { transform: translateX(0); }
+      to { transform: translateX(120vw); }
+    }
 
-  /* Fly R → L */
-  @keyframes fly-right-to-left {
-    from { transform: translateX(0); }
-    to { transform: translateX(-120vw); }
-  }
+    @keyframes fly-right-to-left {
+      from { transform: translateX(0); }
+      to { transform: translateX(-120vw); }
+    }
 
     .container {
       width: 80%;
