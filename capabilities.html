@@ -192,7 +192,7 @@ for (let i = 0; i < 70; i++) {
   const top = Math.random() * window.innerHeight;
 
   // Random speed
-  const speed = 25 + Math.random() * 10;
+  const speed = 20 + Math.random() * 15;
 
   // Random rotation speed
   const rotateSpeed = 5 + Math.random() * 10;
@@ -200,9 +200,9 @@ for (let i = 0; i < 70; i++) {
   // Molecule size rules
 const size =
   mol === 'ammonia.png' ? 50 :
-  mol === 'dodecane.png' ? 500 :
-  mol === 'dodecane.png' ? 400 :
-  200;
+  mol === 'dodecane.png' ? 600 :
+  mol === 'heptamethylnonane.png' ? 600 :
+  300;
 
   // Depth factor (0.6–1.4) affects speed & initial opacity
   const depth = 0.6 + Math.random() * 0.8;
