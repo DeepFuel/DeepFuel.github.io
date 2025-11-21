@@ -51,6 +51,7 @@ pointer-events: none;
 animation-iteration-count: infinite;
 animation-timing-function: linear;
 z-index: 1;
+animation-name: fly-left-to-right;
 }
 
 
@@ -61,7 +62,6 @@ z-index: 1;
 
 
 .flying-molecule[data-speed] {
-animation-name: fly-left-to-right;
 animation-duration: var(--speed, 15s);
 }
 
@@ -99,13 +99,7 @@ animation-duration: var(--speed, 15s);
   <p>AI-Guided Formulation of Next-Generation Sustainable Fuels</p>
 
   <!-- Flying molecule images -->
-<div class="flying-molecule" style="top:10px; width:40px; height:40px; --speed:12s; background-image:url('molecules/dodecane.png'); background-size:contain; background-repeat:no-repeat; background-position:center;" data-speed></div>
-<div class="flying-molecule" style="top:50px; width:40px; height:40px; --speed:15s; background-image:url('molecules/benzene.png'); background-size:contain; background-repeat:no-repeat; background-position:center;" data-speed></div>
-<div class="flying-molecule" style="top:30px; width:40px; height:40px; --speed:13s; background-image:url('molecules/fames.png'); background-size:contain; background-repeat:no-repeat; background-position:center;" data-speed></div>
-<div class="flying-molecule" style="top:70px; width:40px; height:40px; --speed:16s; background-image:url('molecules/methanol.png'); background-size:contain; background-repeat:no-repeat; background-position:center;" data-speed></div>
-<div class="flying-molecule" style="top:40px; width:40px; height:40px; --speed:14s; background-image:url('molecules/hydrogen.png'); background-size:contain; background-repeat:no-repeat; background-position:center;" data-speed></div>
-<div class="flying-molecule" style="top:60px; width:40px; height:40px; --speed:15s; background-image:url('molecules/ammonia.png'); background-size:contain; background-repeat:no-repeat; background-position:center;" data-speed></div>
-<div class="flying-molecule" style="top:20px; width:40px; height:40px; --speed:17s; background-image:url('molecules/ome3.png'); background-size:contain; background-repeat:no-repeat; background-position:center;" data-speed></div>
+  <div id="flying-molecules-container"></div>
   
   <nav class="navbar">
     <a href="index.html">Home</a>
@@ -130,5 +124,33 @@ animation-duration: var(--speed, 15s);
 </div>
 
 <div class="footer">© 2025 DeepFuel-kit</div>
+
+<script>
+const molecules = ['dodecane.png','benzene.png','fames.png','methanol.png','hydrogen.png','ammonia.png','ome3.png'];
+const container = document.getElementById('flying-molecules-container');
+
+
+for(let i=0; i<70; i++){ // 10 of each molecule
+const mol = molecules[i % molecules.length];
+const div = document.createElement('div');
+div.className = 'flying-molecule';
+const top = Math.random() * 100;
+const size = 20 + Math.random() * 40;
+const speed = 10 + Math.random() * 10;
+const left = Math.random() * -100;
+div.style.top = `${top}px`;
+div.style.width = `${size}px`;
+div.style.height = `${size}px`;
+div.style.left = `${left}px`;
+div.style.backgroundImage = `url('molecules/${mol}')`;
+div.style.backgroundSize = 'contain';
+div.style.backgroundRepeat = 'no-repeat';
+div.style.backgroundPosition = 'center';
+div.style.setProperty('--speed', `${speed}s`);
+div.setAttribute('data-speed','');
+container.appendChild(div);
+}
+</script>
+
 </body>
 </html>
