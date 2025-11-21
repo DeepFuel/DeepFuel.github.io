@@ -55,15 +55,15 @@ z-index: 1;
 
 
 @keyframes fly-left-to-right {
-  0% { transform: translateX(-10vw); }
-  50% { transform: translateX(50vw) translateY(5px); }
-  100% { transform: translateX(110vw); }
+  0% { transform: translateX(-10vw) rotate(0deg); }
+  50% { transform: translateX(50vw) translateY(5px) rotate(180deg); }
+  100% { transform: translateX(110vw) rotate(360deg); }
 }
 
 @keyframes fly-right-to-left {
-  0% { transform: translateX(110vw); }
-  50% { transform: translateX(5vw) translateY(50px); }
-  100% { transform: translateX(-10vw); }
+  0% { transform: translateX(110vw) rotate(360deg); }
+  50% { transform: translateX(5vw) translateY(50px) rotate(180deg); }
+  100% { transform: translateX(-10vw) rotate(0deg); }
 }
 
 
