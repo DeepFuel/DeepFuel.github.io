@@ -200,6 +200,9 @@ for (let i = 0; i < 70; i++) {
   // Size rule: ammonia smaller
   const size = mol === 'ammonia.png' ? 30 : 150;
 
+  // Depth factor (0.6–1.4) affects speed & initial opacity
+  const depth = 0.6 + Math.random() * 0.8;
+
   // Random direction: 0 = left→right, 1 = right→left
   const direction = Math.random() < 0.5 ? 'ltr' : 'rtl';
 
@@ -208,6 +211,7 @@ for (let i = 0; i < 70; i++) {
   div.style.height = `${size}px`;
   div.style.backgroundImage = `url('molecules/${mol}')`;
   div.style.backgroundSize = 'contain';
+  div.style.opacity = depth;
   div.style.setProperty('--speed', `${speed}s`);
   div.style.setProperty('--rotate-speed', `${rotateSpeed}s`);
 
