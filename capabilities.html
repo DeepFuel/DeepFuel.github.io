@@ -178,7 +178,7 @@
 <script>
   const molecules = [
   'dodecane.png','benzene.png','fames.png','methanol.png',
-  'hydrogen.png','ammonia.png','ome3.png'
+  'hydrogen.png','ammonia.png','ome3.png', 'heptamethylnonane.png'
 ];
 
 const container = document.getElementById('flying-molecules-container');
@@ -197,8 +197,12 @@ for (let i = 0; i < 70; i++) {
   // Random rotation speed
   const rotateSpeed = 5 + Math.random() * 10;
 
-  // Size rule: ammonia smaller
-  const size = mol === 'ammonia.png' ? 50 : 200;
+  // Molecule size rules
+const size =
+  mol === 'ammonia.png' ? 50 :
+  mol === 'dodecane.png' ? 500 :
+  mol === 'dodecane.png' ? 400 :
+  200;
 
   // Depth factor (0.6–1.4) affects speed & initial opacity
   const depth = 0.6 + Math.random() * 0.8;
