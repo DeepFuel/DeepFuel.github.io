@@ -213,6 +213,10 @@ const size =
   // Depth factor (0.6–1.4) affects speed & initial opacity
   const depth = 0.6 + Math.random() * 0.8;
 
+  // Random animation delay (aleatoric start)
+  const delay = Math.random() * 20; // seconds
+  div.style.animationDelay = `${delay}s, ${delay}s`;
+  
   // Random direction: 0 = left→right, 1 = right→left
   const direction = Math.random() < 0.5 ? 'ltr' : 'rtl';
 
