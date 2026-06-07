@@ -274,18 +274,50 @@ a { color: #003366; }
       </ol>
     </div>
 
-    <div class="section">
-      <h2>Requirements & installation</h2>
-      <p>
-        <strong>DeepFuel-kit</strong> runs on:
-      </p>
-      <ul>
-        <li>Python >=3.11</li>
-        <li>NumPy >=1.24</li>
-        <li>scikit-learn >=1.4</li>
-        <li>... >=1.4</li>
-      </ul>
-    </div>
+  <div class="section">
+  <h2>Installation</h2>
+
+  <h3>From PyPI</h3>
+  <pre><code>pip install deepfuel</code></pre>
+
+  <h3>From Source</h3>
+  <pre><code>git clone https://github.com/RodolfosmFreitas/deepfuel.git
+cd deepfuel
+pip install .
+
+# Install in editable mode
+pip install -e .
+
+# Or install directly from GitHub
+pip install git+https://github.com/RodolfosmFreitas/deepfuel.git
+</code></pre>
+
+  <h3>Dependencies</h3>
+
+  <p>
+    <strong>DeepFuel</strong> relies on the following core scientific computing,
+    machine learning, and uncertainty quantification libraries:
+  </p>
+
+  <ul>
+    <li><strong>Scientific Computing:</strong> NumPy, pandas, SciPy</li>
+    <li><strong>Machine Learning:</strong> scikit-learn, XGBoost, LightGBM</li>
+    <li><strong>Deep Learning:</strong> PyTorch, GPyTorch, PyTorch Geometric, Transformers</li>
+    <li><strong>Chemoinformatics:</strong> DeepChem</li>
+    <li><strong>Molecular Embeddings:</strong> Gensim</li>
+    <li><strong>Uncertainty Quantification:</strong> MAPIE</li>
+    <li><strong>Sensitivity Analysis:</strong> SALib</li>
+    <li><strong>Optimization:</strong> Optuna, pymoo</li>
+    <li><strong>Reinforcement Learning:</strong> Gymnasium, Stable-Baselines3, Shimmy</li>
+    <li><strong>Experiment Tracking:</strong> Weights & Biases (wandb)</li>
+    <li><strong>Utilities:</strong> Joblib, Threadpoolctl, ImageIO</li>
+  </ul>
+
+  <p>
+    All dependencies are installed automatically when installing DeepFuel via
+    <code>pip</code>.
+  </p>
+</div>
 
 
 
